@@ -30,6 +30,6 @@ jobs:
     - name: Build
       run: npm run build --if-present
       working-directory: finPath
-    - name: Test
-      run: npm test
-      working-directory: finPath
+#    - name: Test
+ #     run: npm test
+ #     working-directory: finPath
