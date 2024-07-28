@@ -24,8 +24,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        working-directory: finPath
     - name: Run CI
       run: npm ci
       working-directory: finPath
