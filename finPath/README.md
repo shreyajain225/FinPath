@@ -4,6 +4,10 @@ Finkuchtoh
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Pre-requisite
+Make sure to have node installed in the machine, if not run go to the following link to download
+`https://nodejs.org/en/download/source-code/current`
+
 ## Setup
 
 Make sure to install the dependencies:
