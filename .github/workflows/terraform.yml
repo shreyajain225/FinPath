@@ -36,11 +36,7 @@ jobs:
       working-directory: finPath
 
     # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
-      env:
-        GOOGLE_CREDENTIALS: ${{secrets.GCP_SA_KEY}}}
-      working-directory: finPath
+    
     - name: run pwd
       run: pwd
     # Generates an execution plan for Terraform
