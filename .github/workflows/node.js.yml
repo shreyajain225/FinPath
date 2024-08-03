@@ -41,9 +41,13 @@ jobs:
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v0.4.0'
-      with:
-        credentials_json: '${{ secrets.GCP_SA_KEY }}'
-        service_account: 'terraform-sa-finpath@finpath-430717.iam.gserviceaccount.com'
+      env:
+          GOOGLE_CREDENTIALS: ${{secrets.GCP_SA_KEY}}
+          working-directory: finPath
+      #with:
+        #credentials_json: '${{ secrets.GCP_SA_KEY }}'
+        #service_account: 'terraform-sa-finpath@finpath-430717.iam.gserviceaccount.com'
+        
    # - id: 'auth'
      # uses: 'google-github-actions/auth@v2'
       #env:
@@ -58,4 +62,5 @@ jobs:
       with:
         path: 'FinPath\finPath\.nuxt\dist\server'
         destination: 'gs://finpath-spa'
+        working-directory: finPath
  
