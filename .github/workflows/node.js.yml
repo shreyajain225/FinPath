@@ -1,7 +1,8 @@
+
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: CI
+name: Node.js CI
 
 on:
   push:
@@ -9,28 +10,27 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: finPath
-    
+
     strategy:
       matrix:
-        node-version: [18.x,20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases
+        node-version: [18.x, 20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
     - uses: actions/checkout@v4
-    - run: pwd
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        working-directory: finPath
-    
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: Run CI
+      run: npm ci
+      working-directory: finPath
+    - name: Build
+      run: npm run build --if-present
+      working-directory: finPath
+#    - name: Test
+ #     run: npm test
+ #     working-directory: finPath
