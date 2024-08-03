@@ -10,12 +10,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+      contents: 'read'
+      id-token: 'write'
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
 
     strategy:
       matrix:
@@ -39,12 +40,13 @@ jobs:
      # working-directory: finPath
     - id: 'auth'
       uses: 'google-github-actions/auth@v2'
-      with:
-        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        #auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
-        service_account: 'terraform-sa-finpath@finpath-430717.iam.gserviceaccount.com'
       env:
         GOOGLE_CREDENTIALS: ${{secrets.GCP_SA_KEY}}
+      #with:
+        #workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        #auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+        #service_account: 'terraform-sa-finpath@finpath-430717.iam.gserviceaccount.com'
+      
     - id: 'upload-folder'
       uses: 'google-github-actions/upload-cloud-storage@v2'
       with:
