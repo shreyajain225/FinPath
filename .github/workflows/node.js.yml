@@ -13,6 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
     strategy:
       matrix:
@@ -34,3 +37,18 @@ jobs:
    # - name: Test
     #  run: npm test
      # working-directory: finPath
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v2'
+      with:
+        #workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+        service_account: 'terraform-sa-finpath@finpath-430717.iam.gserviceaccount.com'
+    - id: 'upload-folder'
+      uses: 'google-github-actions/upload-cloud-storage@v2'
+      with:
+        path: 'FinPath\finPath\.nuxt\dist\server'
+        destination: 'gs://finpath-spa'
+    - id: 'uploaded-files'
+      uses: 'foo/bar@v1'
+      env:
+        files: '${{ steps.upload-folder.outputs.uploaded }}'
