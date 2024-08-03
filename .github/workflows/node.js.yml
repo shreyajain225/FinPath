@@ -50,7 +50,7 @@ jobs:
     - id: 'auth'
       uses: 'google-github-actions/auth@v2'
       with:
-        workload_identity_provider: 'principal://iam.googleapis.com/projects/416228969428/locations/global/workloadIdentityPools/finpath-workloadidentity/subject/SUBJECT_ATTRIBUTE_VALUE'
+        workload_identity_provider: 'projects/416228969428/locations/global/workloadIdentityPools/finpath-workloadidentity/providers/my-provider'
         service_account: 'terraform-sa-finpath@finpath-430717.iam.gserviceaccount.com'
         
    # - id: 'auth'
