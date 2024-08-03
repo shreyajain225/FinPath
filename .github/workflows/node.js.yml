@@ -40,9 +40,9 @@ jobs:
      # working-directory: finPath
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
-      uses: `google-github-actions/auth@v0.4.0'
+      uses: 'google-github-actions/auth@v0.4.0'
       with:
-      credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
    # - id: 'auth'
      # uses: 'google-github-actions/auth@v2'
       #env:
