@@ -48,7 +48,4 @@ jobs:
       with:
         path: 'FinPath\finPath\.nuxt\dist\server'
         destination: 'gs://finpath-spa'
-    - id: 'uploaded-files'
-      uses: 'foo/bar@v1'
-      env:
-        files: '${{ steps.upload-folder.outputs.uploaded }}'
+ 
