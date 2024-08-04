@@ -2,8 +2,9 @@ name: 'Terraform'
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "GCS" ]
   pull_request:
+    branches: [ "GCS" ]
 
 permissions:
   contents: read
